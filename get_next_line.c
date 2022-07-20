@@ -17,19 +17,46 @@
  *
  */
 
+#include "get_next_line.h"
+
+#define BUFFER_SIZE 10
+
+/*
 char	*get_next_line(int fd)
 {
-
+	fd = 0;
 }
+*/
 
-
-
-#include <fcntl.h>
 #include <stdio.h>
+#include <fcntl.h>
 
 int main()
 {
-	char buff[1024] = {0,};
 	int fd = 0;
+	int ret;
+	char buff[BUFFER_SIZE] = {0,};
+	fd = open("test.txt", O_RDONLY);
+	if(fd == -1)
+		printf("%s\n", "file open error");
+	ret = read(fd, buff, BUFFER_SIZE);
+	printf("ret: %d\n",ret);
+	printf("buff: %s\n", buff);
+	printf("--------------------\n");
+
+	ret = read(fd, buff, BUFFER_SIZE);
+	printf("ret: %d\n",ret);
+	printf("buff: %s\n", buff);
+	printf("--------------------\n");
+
+	ret =read(fd, buff, BUFFER_SIZE);
+	printf("ret: %d\n",ret);
+	printf("buff: %s\n\n", buff);
+	printf("--------------------\n");
+
+	ret = read(fd, buff, BUFFER_SIZE);
+	printf("ret: %d\n",ret);
+	printf("buff: %s\n\n", buff);
+	printf("--------------------\n");
 
 }

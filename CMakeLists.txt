@@ -8,8 +8,6 @@ include_directories(.)
 
 SET ( CMAKE_C_COMPILER "cc" )
 
-ADD_COMPILE_OPTIONS (cc -Wall -Wextra -Werror -D BUFFER_SIZE=42)
-
 add_executable(get_next_line
         get_next_line.c
         get_next_line.h
