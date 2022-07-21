@@ -21,4 +21,57 @@ int	main(int ac, char **av)
 }
 
 
+ *seonjeon/
+ *
  */
+
+
+#include <stdio.h>
+#include <fcntl.h>
+
+#define BUFFER_SIZE 10
+
+void check()
+{
+	static int i;
+
+	++i;
+	printf("%d\n", i);
+
+}
+
+int main()
+{
+	int fd = 0;
+//	int ret;
+//	char buff[BUFFER_SIZE] = {0,};
+	fd = open("test.txt", O_RDONLY);
+	if(fd == -1)
+		printf("%s\n", "file open error");
+	get_next_line(fd);
+	get_next_line(fd);
+//	ret = read(fd, buff, BUFFER_SIZE);
+//	printf("ret: %d\n",ret);
+//	printf("buff: %s\n", buff);
+//	printf("--------------------\n");
+//
+//	ret = read(fd, buff, BUFFER_SIZE);
+//	printf("ret: %d\n",ret);
+//	printf("buff: %s\n", buff);
+//	printf("--------------------\n");
+//
+//	ret =read(fd, buff, BUFFER_SIZE);
+//	printf("ret: %d\n",ret);
+//	printf("buff: %s\n\n", buff);
+//	printf("--------------------\n");
+//
+//	ret = read(fd, buff, BUFFER_SIZE);
+//	printf("ret: %d\n",ret);
+//	printf("buff: %s\n\n", buff);
+//	printf("--------------------\n");
+//
+//	check();
+//	check();
+//	check();
+//	check();
+}
