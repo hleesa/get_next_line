@@ -42,6 +42,7 @@ void check()
 
 int main()
 {
+
 	int fd = 0;
 //	int ret;
 //	char buff[BUFFER_SIZE] = {0,};

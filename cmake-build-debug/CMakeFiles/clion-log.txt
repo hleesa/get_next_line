@@ -1,4 +1,4 @@
-/private/var/folders/zz/zyxvpxvq6csfxvn_n000crf000363h/T/AppTranslocation/D0BEDA0F-9409-4CF4-9B9B-F6CC891B71A4/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/private/var/folders/zz/zyxvpxvq6csfxvn_n000crf000363h/T/AppTranslocation/D0BEDA0F-9409-4CF4-9B9B-F6CC891B71A4/d/CLion.app/Contents/bin/ninja/mac/ninja -G Ninja -S /Users/salee2/get_next_line -B /Users/salee2/get_next_line/cmake-build-debug
+/private/var/folders/zz/zyxvpxvq6csfxvn_n000crf000363h/T/AppTranslocation/73BC3771-B571-418D-9628-8CE61C91CB02/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/private/var/folders/zz/zyxvpxvq6csfxvn_n000crf000363h/T/AppTranslocation/73BC3771-B571-418D-9628-8CE61C91CB02/d/CLion.app/Contents/bin/ninja/mac/ninja -G Ninja -S /Users/salee2/get_next_line -B /Users/salee2/get_next_line/cmake-build-debug
 -- The C compiler identification is AppleClang 12.0.0.12000032
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done

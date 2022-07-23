@@ -88,7 +88,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (0);
 	ft_memmove(ret, s1, s1len);
 	ft_memmove(ret + s1len, s2, s2len);
-	ret[s1len + s2len] = 0;
+	ret[s1len + s2len] = '\0';
 	return (ret);
 }
 
