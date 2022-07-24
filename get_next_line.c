@@ -15,6 +15,11 @@
 
 #define BUFFER_SIZE 10
 
+struct s_struct
+{
+	char *stored_data;
+	ssize_t bytes_of_data;
+};
 
 int	append_line(char *ret, char *buff)
 {
@@ -50,38 +55,15 @@ int append_last_line(char *ret, char *buff)
 char	*get_next_line(int fd)
 {
 	char		*ret;
- 	static char	*buff;
-	ssize_t		read_bytes = 0;
-	char		*addr_of_newline;
+	char		buff[BUFFER_SIZE];
+	static struct s_line
 
-	buff = (char *) malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (buff == NULL)
-		return (NULL);
-	ret = 0;
-	if(buff == NULL)
-	{
-		read_bytes = read(fd, buff, BUFFER_SIZE);
-		if (read_bytes < 1)	// -1 : 에러, 0 : EOF
-		{
-			free(buff);
-			return NULL;
-		}
-	}
-	while (1)
-	{
-		addr_of_newline = get_addr_of_newline(buff);
-		if (addr_of_newline != NULL)
-			break;
-		if (append_line(ret, buff) == 0)
-			return NULL;
-		read_bytes = read(fd, buff, BUFFER_SIZE);
-		if (read_bytes == -1)
-			return NULL;
-		else if (read_bytes == 0)
-			break;
-	}
-	append_last_line(ret, buff);
-	if(read_bytes < 1)
-		free(buff);
-	return 0;
+	};
+	char 		*adrr_of_newline;
+	ssize_t 	len_of_rest;
+
+	if(rest_buff == )
+		read(fd, buff, BUFFER_SIZE);
+
+	ssize_t read_bytes = 0;
 }
