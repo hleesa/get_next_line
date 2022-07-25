@@ -15,55 +15,103 @@
 
 #define BUFFER_SIZE 10
 
-struct s_struct
+ssize_t	get_newline_offset(const void *src, int c, size_t n)
 {
-	char *stored_data;
-	ssize_t bytes_of_data;
-};
+	size_t				i;
+	const unsigned char	ch = c;
+	const unsigned char	*sp = (const unsigned char *) src;
 
-int	append_line(char *ret, char *buff)
+	i = 0;
+	while (i < n)
+	{
+		if (sp[i] == ch)
+			return (i);
+		++i;
+	}
+	return (-1);
+}
+
+void	*memjoin(void *front, void *back, t_range back_range)
 {
-	char *new_ret;
+	void	*ret;
+	void	*addr_of_front_data;
+	void	*addr_of_back_data;
+	ssize_t	front_size;
+	ssize_t	back_size;
 
-	new_ret = ft_strjoin(ret, buff);
-	if(new_ret == NULL)
+	addr_of_front_data = ((t_data *) front)->data;
+	addr_of_back_data = ((t_data *) back)->data;
+	front_size = ((t_data *) front)->size;
+	back_size = back_range.end - back_range.begin;
+	ret = malloc(front_size + back_size);
+	if (ret == 0)
+	{
+		free(front);
 		return (0);
-	free(ret);
-	ret = new_ret;
-	return (ret != NULL);
+	}
+	ft_memmove(ret, addr_of_front_data, front_size);
+	ft_memmove((unsigned char *) ret + front_size, addr_of_back_data, \
+			back_size);
+	free(front);
+	return (ret);
 }
 
-char*	get_addr_of_newline(char * buff)
+ssize_t	buff_init(char *buff, t_data **repository)
 {
-	return (ft_strchr(buff, '\n'));
+	ssize_t	data_size;
+
+	if ((*repository)->size == 0)
+		data_size = 0;
+	else
+	{
+		ft_memmove((void *) buff, (*repository)->data, (*repository)->size);
+		free((*repository)->data);
+		(*repository)->data = 0;
+		data_size = (*repository)->size;
+		(*repository)->size = 0;
+	}
+	return (data_size);
 }
 
-
-int append_last_line(char *ret, char *buff)
+char	*get_one_line(int fd, t_data **repository)
 {
-	char *addr_of_newline;
-	char *end_of_line;
+	t_data	ret;
+	char	buff[BUFFER_SIZE];
+	ssize_t	data_size;
+	ssize_t	newline_offset;
 
-	addr_of_newline = get_addr_of_newline(buff);
-	end_of_line = ft_substr(buff, 0, addr_of_newline - buff);
-	ft_strjoin(ret, end_of_line);
-	free(end_of_line);
-	// 위 함수들 반환값 확인 및 에러 호출
-	return (1);
+	ret = (t_data){0, 0};
+	data_size = buff_init(buff, repository);
+	while ((*repository)->size == 0)
+	{
+		if (data_size == -1)
+			break ;
+		newline_offset = get_newline_offset(buff, '\n', data_size);
+		if (newline_offset == -1)
+		{
+			ret.data = memjoin(ret.data, buff, (t_range){0, data_size});
+			ret.size += data_size;
+		}
+		else
+		{
+			ret.data = memjoin(ret.data, buff, \
+					(t_range){0, newline_offset + 1});
+			ret.size += newline_offset + 1;
+			(*repository)->data = memjoin((*repository)->data, buff, \
+					(t_range){newline_offset + 1, data_size});
+			(*repository)->size = data_size - (newline_offset + 1);
+			break ;
+		}
+		data_size = read(fd, (void *) buff, BUFFER_SIZE);
+	}
+	return (ret.data);
 }
 
 char	*get_next_line(int fd)
 {
-	char		*ret;
-	char		buff[BUFFER_SIZE];
-	static struct s_line
+	static t_data	*repository;
 
-	};
-	char 		*adrr_of_newline;
-	ssize_t 	len_of_rest;
-
-	if(rest_buff == )
-		read(fd, buff, BUFFER_SIZE);
-
-	ssize_t read_bytes = 0;
+	if (fd < 0)
+		return (0);
+	return (get_one_line(fd, &repository));
 }
