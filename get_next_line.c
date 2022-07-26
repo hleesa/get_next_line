@@ -13,7 +13,7 @@
 #include "get_next_line.h"
 #include <stdio.h>
 
-#define BUFFER_SIZE 10
+//#define BUFFER_SIZE 10
 
 ssize_t	get_newline_offset(const void *src, int c, size_t n)
 {
@@ -41,8 +41,9 @@ void	*memjoin(void *addr_front, t_range front_range, void *addr_back, t_range ba
 	if (ret == 0)
 		return (0);
 	ft_memmove(ret, addr_front, front_size);
-	ft_memmove((unsigned char *) ret + front_size, addr_back, \
-			back_size);
+	ft_memmove((unsigned char *) ret + front_size , (unsigned char *)addr_back + back_range.begin, back_size);
+	((unsigned char *)ret)[front_size + back_size + 1] = 0;
+	free(addr_front);
 	return (ret);
 }
 
@@ -71,7 +72,7 @@ char	*get_one_line(int fd, t_data *repository)
 
 	ret = (t_data){0, 0};
 	data_size = buff_init(buff, repository);
-	while (repository == 0)
+	while (repository->data == 0)
 	{
 		if (data_size == -1)
 			break ;
@@ -83,13 +84,17 @@ char	*get_one_line(int fd, t_data *repository)
 		}
 		else
 		{
-			ret.data = memjoin(ret.data, (t_range){0, ret.size}, buff, (t_range){0, newline_offset + 1});
+			ret.data = memjoin(ret.data, (t_range){0, ret.size}, \
+			buff, (t_range){0, newline_offset + 1});
 			ret.size += newline_offset + 1;
-			ret.data = memjoin(repository->data, (t_range){0, repository->size}, buff, (t_range){newline_offset + 1, data_size});
+			repository->data = memjoin(repository->data, (t_range){0, repository->size}, \
+			buff, (t_range){newline_offset + 1, data_size});
 			repository->size = data_size - (newline_offset + 1);
 			break ;
 		}
 		data_size = read(fd, (void *) buff, BUFFER_SIZE);
+		if (data_size == 0)
+			break;
 	}
 	return (ret.data);
 }

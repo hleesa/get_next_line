@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <fcntl.h>
 
-#define BUFFER_SIZE 10
+//#define BUFFER_SIZE 10
 
 int main()
 {
