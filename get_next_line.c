@@ -6,14 +6,11 @@
 /*   By: salee2 <salee2n@student.42seoul.k>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 10:41:09 by salee2            #+#    #+#             */
-/*   Updated: 2022/07/19 18:58:16 by salee2           ###   ########.fr       */
+/*   Updated: 2022/07/27 16:27:02 by salee2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
-
-//#define BUFFER_SIZE 10
 
 ssize_t	get_newline_offset(const void *src, int c, size_t n)
 {
@@ -31,19 +28,20 @@ ssize_t	get_newline_offset(const void *src, int c, size_t n)
 	return (-1);
 }
 
-void	*memjoin(void *addr_front, t_range front_range, void *addr_back, t_range back_range)
+void	*memjoin(void *data, ssize_t d_size, void *buff, ssize_t b_size)
 {
 	void	*ret;
-	const ssize_t front_size = front_range.end - front_range.begin;
-	const ssize_t back_size = back_range.end - back_range.begin;
 
-	ret = malloc(front_size + back_size + 1);
+	ret = malloc(d_size + b_size + 1);
 	if (ret == 0)
+	{
+		free(data);
 		return (0);
-	ft_memmove(ret, addr_front, front_size);
-	ft_memmove((unsigned char *) ret + front_size , (unsigned char *)addr_back + back_range.begin, back_size);
-	((unsigned char *)ret)[front_size + back_size + 1] = 0;
-	free(addr_front);
+	}
+	ft_memmove(ret, data, d_size);
+	ft_memmove((unsigned char *)ret + d_size, buff, b_size);
+	((unsigned char *)ret)[d_size + b_size] = 0;
+	free(data);
 	return (ret);
 }
 
@@ -51,13 +49,14 @@ ssize_t	buff_init(char *buff, t_data *repository)
 {
 	ssize_t	data_size;
 
-	if (repository == 0)
+	if (repository->size == 0)
 		data_size = 0;
 	else
 	{
 		ft_memmove((void *) buff, repository->data, repository->size);
-		repository->data = 0;
+		free(repository->data);
 		data_size = repository->size;
+		repository->data = 0;
 		repository->size = 0;
 	}
 	return (data_size);
@@ -74,28 +73,37 @@ char	*get_one_line(int fd, t_data *repository)
 	data_size = buff_init(buff, repository);
 	while (repository->data == 0)
 	{
-		if (data_size == -1)
-			break ;
 		newline_offset = get_newline_offset(buff, '\n', data_size);
 		if (newline_offset == -1)
 		{
-			ret.data = memjoin(ret.data, (t_range){0, ret.size}, buff, (t_range){0, data_size});
+			ret.data = memjoin(ret.data, ret.size, buff, data_size);
+			if (ret.data == 0)
+				return (0);
 			ret.size += data_size;
 		}
 		else
 		{
-			ret.data = memjoin(ret.data, (t_range){0, ret.size}, \
-			buff, (t_range){0, newline_offset + 1});
+			ret.data = memjoin(ret.data, ret.size, buff, newline_offset + 1);
+			if (ret.data == 0)
+				return (0);
 			ret.size += newline_offset + 1;
-			repository->data = memjoin(repository->data, (t_range){0, repository->size}, \
-			buff, (t_range){newline_offset + 1, data_size});
-			repository->size = data_size - (newline_offset + 1);
+			if (newline_offset + 1 < BUFFER_SIZE)
+			{
+				repository->data = memjoin(repository->data, repository->size,
+										   buff + newline_offset + 1,
+										   data_size - (newline_offset + 1));
+				if (repository->data == 0)
+					return (0);
+				repository->size = data_size - (newline_offset + 1);
+			}
 			break ;
 		}
 		data_size = read(fd, (void *) buff, BUFFER_SIZE);
-		if (data_size == 0)
-			break;
+		if (data_size < 1)
+			break ;
 	}
+	if (ret.size == 0)
+		return (0);
 	return (ret.data);
 }
 
@@ -103,7 +111,7 @@ char	*get_next_line(int fd)
 {
 	static t_data	repository;
 
-	if (fd < 0)
+	if (fd < 0 || fd >= OPEN_MAX)
 		return (0);
 	return (get_one_line(fd, &repository));
 }

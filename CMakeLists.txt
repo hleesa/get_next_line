@@ -5,6 +5,8 @@ set(CMAKE_C_STANDARD 11)
 
 include_directories(.)
 
+add_compile_options(-g -Wall -Wextra -Werror -D BUFFER_SIZE=1)
+
 add_executable(get_next_line
         get_next_line.c
         get_next_line.h

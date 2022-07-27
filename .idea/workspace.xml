@@ -18,46 +18,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed38de29-5f40-45cf-8118-15a954da2bf1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/a.out" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/query/cache-v2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/query/cmakeFiles-v1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/query/codemodel-v2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/query/toolchains-v1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cache-v2-7691b8f923191c610ecf.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-68aaeaef44a6d99ef572.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-7018ce326c5d2f42cad0.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/directory-.-Debug-f5ebdc15457944623624.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2022-07-26T12-08-40-0800.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-get_next_line-Debug-e4c2a842feeeeb8cb8d5.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/toolchains-v1-df1de3e60a7daa416661.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.22.3/CMakeCCompiler.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.22.3/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.22.3/CMakeSystem.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.22.3/CompilerIdC/CMakeCCompilerId.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.22.3/CompilerIdC/a.out" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/cmake.check_cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/get_next_line.dir/get_next_line.c.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/get_next_line.dir/get_next_line_utils.c.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/get_next_line.dir/main.c.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rules.ninja" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/get_next_line" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/test.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/a.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cache-v2-7691b8f923191c610ecf.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-68aaeaef44a6d99ef572.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-7018ce326c5d2f42cad0.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2022-07-26T12-08-40-0800.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-get_next_line-Debug-e4c2a842feeeeb8cb8d5.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/get_next_line.dir/get_next_line.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/get_next_line.dir/get_next_line.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/get_next_line.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/get_next_line.dir/main.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rules.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rules.ninja" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/get_next_line" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/get_next_line" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/test.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/get_next_line.c" beforeDir="false" afterPath="$PROJECT_DIR$/get_next_line.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/get_next_line.h" beforeDir="false" afterPath="$PROJECT_DIR$/get_next_line.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/test.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,9 +95,9 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="get_next_line" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="get_next_line" TARGET_NAME="get_next_line" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="get_next_line" RUN_TARGET_NAME="get_next_line">
@@ -159,7 +144,10 @@
       <workItem from="1658832917972" duration="3416000" />
       <workItem from="1658836788563" duration="24000" />
       <workItem from="1658836941681" duration="309000" />
-      <workItem from="1658837304696" duration="3347000" />
+      <workItem from="1658837304696" duration="3417000" />
+      <workItem from="1658893409938" duration="3712000" />
+      <workItem from="1658905413456" duration="4887000" />
+      <workItem from="1658915375644" duration="4536000" />
     </task>
     <servers />
   </component>
@@ -181,9 +169,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/get_next_line.c</url>
-          <line>71</line>
-          <option name="timeStamp" value="32" />
+          <url>file://$PROJECT_DIR$/main.c</url>
+          <line>14</line>
+          <option name="timeStamp" value="33" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

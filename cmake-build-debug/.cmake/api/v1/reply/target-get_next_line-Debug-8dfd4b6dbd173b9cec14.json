@@ -11,6 +11,7 @@
 		"commands" : 
 		[
 			"add_executable",
+			"add_compile_options",
 			"include_directories"
 		],
 		"files" : 
@@ -25,11 +26,17 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 8,
+				"line" : 10,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
+				"file" : 0,
+				"line" : 8,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
 				"file" : 0,
 				"line" : 6,
 				"parent" : 0
@@ -43,12 +50,36 @@
 			[
 				{
 					"fragment" : "-g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15"
+				},
+				{
+					"backtrace" : 2,
+					"fragment" : "-g"
+				},
+				{
+					"backtrace" : 2,
+					"fragment" : "-Wall"
+				},
+				{
+					"backtrace" : 2,
+					"fragment" : "-Wextra"
+				},
+				{
+					"backtrace" : 2,
+					"fragment" : "-Werror"
+				},
+				{
+					"backtrace" : 2,
+					"fragment" : "-D"
+				},
+				{
+					"backtrace" : 2,
+					"fragment" : "BUFFER_SIZE=1"
 				}
 			],
 			"includes" : 
 			[
 				{
-					"backtrace" : 2,
+					"backtrace" : 3,
 					"path" : "/Users/salee2/get_next_line/."
 				}
 			],
