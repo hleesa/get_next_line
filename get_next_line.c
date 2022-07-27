@@ -6,7 +6,7 @@
 /*   By: salee2 <salee2n@student.42seoul.k>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 10:41:09 by salee2            #+#    #+#             */
-/*   Updated: 2022/07/27 16:27:02 by salee2           ###   ########.fr       */
+/*   Updated: 2022/07/27 22:05:33 by salee2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,56 +62,62 @@ ssize_t	buff_init(char *buff, t_data *repository)
 	return (data_size);
 }
 
-char	*get_one_line(int fd, t_data *repository)
+int	update_repository(t_data *repository, char *buff, \
+		ssize_t newline_offset, ssize_t data_size)
 {
-	t_data	ret;
-	char	buff[BUFFER_SIZE];
+	if (newline_offset + 1 < data_size)
+	{
+		repository->data = memjoin(repository->data, repository->size, \
+			buff + newline_offset + 1,data_size - (newline_offset + 1));
+		if (repository->data == 0)
+			return (0);
+		repository->size = data_size - (newline_offset + 1);
+	}
+	return (1);
+}
+
+void get_one_line(int fd, t_data *repository, char *buff, t_data *ret)
+{
 	ssize_t	data_size;
 	ssize_t	newline_offset;
+	ssize_t b_size;
 
-	ret = (t_data){0, 0};
 	data_size = buff_init(buff, repository);
-	while (repository->data == 0)
+	while (1)
 	{
 		newline_offset = get_newline_offset(buff, '\n', data_size);
 		if (newline_offset == -1)
-		{
-			ret.data = memjoin(ret.data, ret.size, buff, data_size);
-			if (ret.data == 0)
-				return (0);
-			ret.size += data_size;
-		}
+			b_size = data_size;
 		else
-		{
-			ret.data = memjoin(ret.data, ret.size, buff, newline_offset + 1);
-			if (ret.data == 0)
-				return (0);
-			ret.size += newline_offset + 1;
-			if (newline_offset + 1 < BUFFER_SIZE)
-			{
-				repository->data = memjoin(repository->data, repository->size,
-										   buff + newline_offset + 1,
-										   data_size - (newline_offset + 1));
-				if (repository->data == 0)
-					return (0);
-				repository->size = data_size - (newline_offset + 1);
-			}
-			break ;
-		}
+			b_size = newline_offset + 1;
+		ret->data = memjoin(ret->data, ret->size, buff, b_size);
+		if (ret->data == 0)
+			return ;
+		ret->size += b_size;
+		if (newline_offset != -1)
+			break;
 		data_size = read(fd, (void *) buff, BUFFER_SIZE);
 		if (data_size < 1)
 			break ;
 	}
-	if (ret.size == 0)
-		return (0);
-	return (ret.data);
+	if (update_repository(repository, buff, newline_offset, data_size))
+	return ;
 }
 
 char	*get_next_line(int fd)
 {
-	static t_data	repository;
+	static 	t_data	repository;
+	char 	buff[BUFFER_SIZE];
+	t_data ret;
 
 	if (fd < 0 || fd >= OPEN_MAX)
 		return (0);
-	return (get_one_line(fd, &repository));
+	ret = (t_data){0, 0};
+	get_one_line(fd, &repository, buff, &ret);
+	if (ret.size == 0)
+	{
+		free(ret.data);
+		return (0);
+	}
+	return (ret.data);
 }
