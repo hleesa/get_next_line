@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: salee2 <salee2n@student.42seoul.k>         +#+  +:+       +#+        */
+/*   By: salee2 <salee2@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/19 18:58:45 by salee2            #+#    #+#             */
-/*   Updated: 2022/07/28 12:39:42 by salee2           ###   ########.fr       */
+/*   Created: 2022/07/28 13:26:34 by salee2            #+#    #+#             */
+/*   Updated: 2022/07/28 13:26:37 by salee2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 ssize_t	get_newline_offset(const void *src, int c, size_t n)
 {
