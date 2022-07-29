@@ -52,7 +52,7 @@ void	update_repository(t_data *repository, char *buff, \
 {
 	if (newline_offset + 1 < data_size)
 	{
-		repository->data = memjoin(repository->data, repository->size, \
+		repository->data = memjoin(NULL, 0, \
 				buff + newline_offset + 1, data_size - (newline_offset + 1));
 		if (repository->data == NULL)
 		{
@@ -88,8 +88,9 @@ void	get_one_line(t_data *ret, int fd, char *buff, t_data *repository)
 		if (data_size < 1)
 			break ;
 	}
+	if (data_size < 0)
+		return ;
 	update_repository(repository, buff, newline_offset, data_size);
-	return ;
 }
 
 char	*get_next_line(int fd)
