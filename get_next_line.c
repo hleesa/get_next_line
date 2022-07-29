@@ -6,7 +6,7 @@
 /*   By: salee2 <salee2@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 13:26:58 by salee2            #+#    #+#             */
-/*   Updated: 2022/07/28 13:27:00 by salee2           ###   ########.fr       */
+/*   Updated: 2022/07/29 13:49:40 by salee2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@ void	*memjoin(void *data, ssize_t d_size, void *buff, ssize_t b_size)
 	void	*ret;
 
 	ret = malloc(sizeof(unsigned char) * (d_size + b_size + 1));
-	if (ret == 0)
+	if (ret == NULL)
 	{
-		if (data != 0)
+		if (data != NULL)
 			free(data);
-		return (0);
+		return (NULL);
 	}
 	ft_memmove(ret, data, d_size);
 	ft_memmove((unsigned char *)ret + d_size, buff, b_size);
-	((unsigned char *)ret)[d_size + b_size] = 0;
-	if (data != 0)
+	((unsigned char *)ret)[d_size + b_size] = '\0';
+	if (data != NULL)
 		free(data);
 	return (ret);
 }
@@ -42,8 +42,7 @@ ssize_t	buff_init(char *buff, t_data *repository)
 		ft_memmove((void *) buff, repository->data, repository->size);
 		free(repository->data);
 		data_size = repository->size;
-		repository->data = 0;
-		repository->size = 0;
+		*repository = (t_data){NULL, 0};
 	}
 	return (data_size);
 }
@@ -55,8 +54,11 @@ void	update_repository(t_data *repository, char *buff, \
 	{
 		repository->data = memjoin(repository->data, repository->size, \
 				buff + newline_offset + 1, data_size - (newline_offset + 1));
-		if (repository->data == 0)
+		if (repository->data == NULL)
+		{
+			repository->size = 0;
 			return ;
+		}
 		repository->size = data_size - (newline_offset + 1);
 	}
 	return ;
@@ -77,7 +79,7 @@ void	get_one_line(t_data *ret, int fd, char *buff, t_data *repository)
 		else
 			read_size = newline_offset + 1;
 		ret->data = memjoin(ret->data, ret->size, buff, read_size);
-		if (ret->data == 0)
+		if (ret->data == NULL)
 			return ;
 		ret->size += read_size;
 		if (newline_offset != -1)
@@ -96,18 +98,18 @@ char	*get_next_line(int fd)
 	char			*buff;
 	static t_data	repository;
 
-	if (fd < 0 || fd >= OPEN_MAX)
+	if (fd < 0 || fd >= OPEN_MAX || BUFFER_SIZE < 0)
 		return (0);
 	buff = (char *) malloc(sizeof(char) * BUFFER_SIZE);
-	if (buff == 0)
-		return (0);
-	ret = (t_data){0, 0};
+	if (buff == NULL)
+		return (NULL);
+	ret = (t_data){NULL, 0};
 	get_one_line(&ret, fd, buff, &repository);
 	if (ret.size == 0)
 	{
-		if (ret.data != 0)
+		if (ret.data != NULL)
 			free(ret.data);
-		ret.data = 0;
+		ret.data = NULL;
 	}
 	free(buff);
 	return (ret.data);
